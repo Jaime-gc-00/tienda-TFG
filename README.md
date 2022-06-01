@@ -13,9 +13,9 @@ Despliegue:
 
 **3. Desplegar base de datos:**
 
-      kubectl apply -f db_config/secrets.yaml
-      kubectl apply -f db_config/mysql-pv.yaml
-      kubectl apply -f db_config/mysqp-deployment.yaml
+      kubectl apply -f db_conf/secrets.yaml
+      kubectl apply -f db_conf/mysql-pv.yaml
+      kubectl apply -f db_conf/mysqp-deployment.yaml
 
 **4. Ingresar en la base de datos con:**
 
@@ -49,6 +49,7 @@ Despliegue:
       fission fn create --name borrarcarrito --env python --code carrito_borrarcarrito.py;
       fission fn create --name agregarencarrito --env python --code carrito_agregarencarrito.py;
       fission fn create --name comprarcarrito --env python --code carrito_comprarcarrito.py;
+      fission fn create --name sendemail --env python --code sendemail.py;
 
       fission route create --name inicio --method POST --method GET --url /inicio --function inicio;
       fission route create --name brand --method POST --method GET --url /brand --function brand;
@@ -65,6 +66,7 @@ Despliegue:
       fission route create --name borrarcarrito --method POST --url /borrarcarrito --function borrarcarrito;
       fission route create --name agregarencarrito --method POST --url /agregarencarrito --function agregarencarrito;
       fission route create --name comprarcarrito --method POST --url /comprarcarrito --function comprarcarrito;
+      fission route create --name sendemail --method POST --url /sendemail --function sendemail;
 
 **10. Por último obtener la dirección IP externa con:**
       

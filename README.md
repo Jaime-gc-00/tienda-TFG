@@ -1,4 +1,4 @@
-# tienda-TFG-v5
+# tienda-TFG
 Versión inicial de la tienda acabada. Abierta a posibles nuevas funcionalidades.
 
 Despliegue:

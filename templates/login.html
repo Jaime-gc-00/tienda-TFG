@@ -1744,7 +1744,9 @@ footer {
                 <h2 class="is-size-4"><strong>Datos de sesión</strong></h2>
                 <p><u>Nombre de usuario:</u> {{sessionU}}</p>
                 <p><u>Email:</u> {{sessionE}}</p>
-                <p><u>Rol:</u> {{sessionR}}</p>
+                {% if sessionR == 'admin' %}    
+                <p><u>Eres administrador</u></p>
+                {% endif %}
                 {% endif %}
             </div>
             {% if sessionR != 'cliente' %}

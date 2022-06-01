@@ -8,7 +8,6 @@ import requests
 from werkzeug.security import check_password_hash, generate_password_hash
 
 app = Flask(__name__)
-#app.secret_key = 'a-secret-string-for-cookies'
 APP_DIR = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE_DIR = os.path.join(APP_DIR, 'templates')
 current_app.template_folder = TEMPLATE_DIR
@@ -270,7 +269,17 @@ def lookbook():
             except:
                 return "<h1>Error en 'mascaros'</h1>"
 
-
+         ######### EN OFFERTA ###########
+         
+        if request.form['submit']=='enoferta':
+            try:
+                sentencia = "SELECT * FROM Products WHERE offer=1"
+                data = {'sql': sentencia}
+                productList = json.loads(requests.post(url, json=data).text) 
+                return render_template('lookbook.html', productos=productList, sessionU=sessionU, sessionR=sessionR, sessionE=sessionE)
+            except:
+                return "<h1>Error en 'en offerta'</h1>"
+         
     sentencia = "SELECT * FROM Products"
     data = {'sql': sentencia}
     productList = json.loads(requests.post(url, json=data).text)

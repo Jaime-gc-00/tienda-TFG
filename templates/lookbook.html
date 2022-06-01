@@ -1809,6 +1809,14 @@ footer {
                     Pantalones
                 </button>
             </form>
+            <form action="/lookbook"  method="POST">            
+                <input type="text" name="sessionU" value="{{sessionU}}" class="form-control-field" hidden>
+                <input type="text" name="sessionE" value="{{sessionE}}" class="form-control-field" hidden>
+                <input type="text" name="sessionR" value="{{sessionR}}" class="form-control-field" hidden>             
+                <button type="submit" name="submit" value="enoferta" class="nav-item" style="background-color:transparent; border: none;">
+                    ¡En Oferta!
+                </button>
+            </form>
         </nav>
     </div>
     <div class="container">
@@ -1817,10 +1825,14 @@ footer {
             {% for producto in productos %}
             <div class="column is-half-mobile is-one-quarter-desktop">
                 <div class="card ">
-                    <!-- <span class="price"> <sup>REF</sup> M1</span> -->
                     <img src="https://github.com/Jaime-gc-00/probando-tienda/blob/main/static/img/{{producto.photo}}?raw=true" alt="">
                     <div clas="card-info">
-                        <h4 class="has-text-black has-text-centered has-text-weight-bold"><strike>${{producto.oldPrice}}</strike> ${{producto.currentPrice}}</h4>
+                        <h4 class="has-text-black has-text-centered has-text-weight-bold">
+                            {% if producto.offer == 1 %}
+                            <strike>${{producto.oldPrice}}</strike>
+                            {% endif %}
+                            ${{producto.currentPrice}}
+                        </h4>
                         <div class="card-buttons">
                             {% if sessionU != "" %}
                             <form action="/carrito"  method="POST" class="btn btn--mini-rounded">
@@ -1852,12 +1864,6 @@ footer {
                             <br />
                             <P>Unidades vendidas: {{producto.soldUnits}}</P>
                             {% endif %}
-                            <!-- <a href="" class="btn btn--mini-rounded">
-                                <i class="zmdi zmdi-shopping-cart"></i>
-                            </a>
-                            <a href="/product" class="btn btn--mini-rounded">
-                                <i class="zmdi zmdi-info"></i>
-                            </a> -->
                         </div>
                     </div>
                 </div>
@@ -1875,7 +1881,6 @@ footer {
                         <li class="footer-item">
                             <h3 class="has-text-weight-bold">Información</h3>
                         </li>
-                        <!-- <li class="footer-item"><a class="footer-link" href="/inicio">Inicio</a></li> -->
                         <li class="footer-item">
                             <form action="/inicio" method="POST">
                                 <input type="text" name="sessionU" value="{{sessionU}}" class="form-control-field" hidden>
@@ -1886,7 +1891,6 @@ footer {
                                 </button>
                             </form>
                         </li>
-                        <!-- <li class="footer-item"><a class="footer-link" href="/brand">La marca</a></li> -->
                         <li class="footer-item">
                             <form action="/brand" method="POST">
                                 <input type="text" name="sessionU" value="{{sessionU}}" class="form-control-field" hidden>
@@ -1905,7 +1909,6 @@ footer {
                             <h3 class="has-text-weight-bold">Tu cuenta</h3>
                         </li>
                         {% if sessionU == "" %}
-                        <!-- <li class="footer-item"><a class="footer-link" href="/login">Iniciar sesión / Registrar</a></li> -->
                         <li class="footer-item">
                             <form action="/login" method="POST">
                                 <input type="text" name="sessionU" value="{{sessionU}}" class="form-control-field" hidden>
@@ -1918,8 +1921,6 @@ footer {
                         </li>
                         {% endif %}
                         {% if sessionU != "" %}
-                        <!-- <li class="footer-item"><a class="footer-link" href="/logout">Cerrar sesión</a></li>
-                        <li class="footer-item"><a class="footer-link" href="/carrito">Ver carrito </a></li> -->
                         <li class="footer-item">
                             <form action="/carrito" method="POST">
                                 <input type="text" name="sessionU" value="{{sessionU}}" class="form-control-field" hidden>
@@ -1997,7 +1998,7 @@ footer {
         </div>
     </footer>
     <script>
-        // script del menu responsive Abrir el menu
+// script del menu responsive Abrir el menu
 var btnMobile = document.getElementById('btn-mobile')
 btnMobile.addEventListener('click', function (e) {
     e.preventDefault()

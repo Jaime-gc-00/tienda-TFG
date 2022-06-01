@@ -3,7 +3,6 @@ from flask import current_app, Flask, request, render_template, jsonify, redirec
 import json
 import os
 import requests
-#from flaskext.mysql import MySQL
 import pymysql.cursors
 app = Flask(__name__)
 
@@ -29,6 +28,5 @@ def main():
         conn.commit()
         cursor.close()
         conn.close()
-        #return "<h1>Usuario agregado correctamente</h1>"
     except:
         return "<h1>Algo salio mal en: postUser</h1>"

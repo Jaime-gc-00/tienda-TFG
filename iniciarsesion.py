@@ -3,7 +3,6 @@ from flask import current_app, Flask, request, render_template, jsonify, redirec
 import json
 import os
 import requests
-#from flaskext.mysql import MySQL
 import pymysql.cursors
 app = Flask(__name__)
 

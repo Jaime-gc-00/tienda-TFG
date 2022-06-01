@@ -3,7 +3,7 @@ from flask import current_app, Flask, request, render_template, jsonify, redirec
 import json
 import os
 import requests
-#from flaskext.mysql import MySQL
+
 import pymysql.cursors
 from pymysql.constants import CLIENT
 app = Flask(__name__)
@@ -22,10 +22,6 @@ def main():
         username = datos['username']
         idProduct = datos['idProduct']
         cantidad = datos['cantidad']
-        # username = 'jaime'
-        # idProduct = 1
-        # cantidad = 50
-        #### PRIMERA QUERY
         data = (username, idProduct)
         sql = "SELECT * FROM Carritos WHERE id_usuario=%s AND id_product=%s;"
         cursor = conn.cursor()
@@ -34,8 +30,6 @@ def main():
         carritoObject = cursor.fetchone()
         #### SEGUNDA QUERY
         if carritoObject:
-            #return carritoObject
-            #return str(carritoObject["cantidad"])
             cantidadActual = (int(cantidad) + carritoObject["cantidad"])
             data = (cantidadActual, username, idProduct)
             sql = "UPDATE Carritos SET cantidad=%s WHERE id_usuario=%s AND id_product=%s;"

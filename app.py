@@ -315,7 +315,7 @@ def product():
                 return render_template('producto.html', productoObtenido=productoObtenido, sessionU=sessionU, sessionR=sessionR, sessionE=sessionE)
             except:
                 return "<h1>AAAAAAAAAAAAAAAA</h1>"
-    return "<h1>NO VALE ENTRAR DESDE LA URL :(</h1>"
+    return redirect("http://34.69.19.98/inicio")
 
 def login():
     sessionU = ""
@@ -447,4 +447,4 @@ def carrito():
             except:
                 return "<h1>ERROR COMPRANDO CARRITO</h1>"
 
-    return "<h1>NO PUEDES ENTRAR POR LA URL :( </h1>"
+    return redirect("http://34.69.19.98/inicio")

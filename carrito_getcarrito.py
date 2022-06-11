@@ -10,7 +10,7 @@ app = Flask(__name__)
 def main():
     try:
         conn = pymysql.connect(
-            host='10.64.0.8', 
+            host='10.64.1.8', 
             user='root',
             password='jaime',
             database='TFGJaime',

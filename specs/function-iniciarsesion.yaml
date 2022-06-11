@@ -1,0 +1,54 @@
+include:
+- iniciarsesion.py
+kind: ArchiveUploadSpec
+name: iniciarsesion-py-VywT
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: iniciarsesion-77894c3d-45f2-4bd1-92b6-e49821bbd9e1
+  namespace: default
+spec:
+  deployment:
+    checksum: {}
+    type: url
+    url: archive://iniciarsesion-py-VywT
+  environment:
+    name: python
+    namespace: default
+  source:
+    checksum: {}
+status:
+  buildstatus: none
+  lastUpdateTimestamp: "2022-06-11T10:48:32Z"
+
+---
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: iniciarsesion
+  namespace: default
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: poolmgr
+      MaxScale: 0
+      MinScale: 0
+      SpecializationTimeout: 120
+      TargetCPUPercent: 0
+    StrategyType: execution
+  concurrency: 500
+  environment:
+    name: python
+    namespace: default
+  functionTimeout: 60
+  idletimeout: 120
+  package:
+    packageref:
+      name: iniciarsesion-77894c3d-45f2-4bd1-92b6-e49821bbd9e1
+      namespace: default
+  requestsPerPod: 1
+  resources: {}

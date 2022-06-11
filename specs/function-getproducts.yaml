@@ -1,0 +1,54 @@
+include:
+- getproducts.py
+kind: ArchiveUploadSpec
+name: getproducts-py-aDlH
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: getproducts-4ad0a8c8-3284-4d7b-a54d-e06debe3b48c
+  namespace: default
+spec:
+  deployment:
+    checksum: {}
+    type: url
+    url: archive://getproducts-py-aDlH
+  environment:
+    name: python
+    namespace: default
+  source:
+    checksum: {}
+status:
+  buildstatus: none
+  lastUpdateTimestamp: "2022-06-11T10:48:33Z"
+
+---
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: getproducts
+  namespace: default
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: poolmgr
+      MaxScale: 0
+      MinScale: 0
+      SpecializationTimeout: 120
+      TargetCPUPercent: 0
+    StrategyType: execution
+  concurrency: 500
+  environment:
+    name: python
+    namespace: default
+  functionTimeout: 60
+  idletimeout: 120
+  package:
+    packageref:
+      name: getproducts-4ad0a8c8-3284-4d7b-a54d-e06debe3b48c
+      namespace: default
+  requestsPerPod: 1
+  resources: {}

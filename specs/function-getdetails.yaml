@@ -1,0 +1,54 @@
+include:
+- getdetails.py
+kind: ArchiveUploadSpec
+name: getdetails-py-MBeW
+
+---
+apiVersion: fission.io/v1
+kind: Package
+metadata:
+  creationTimestamp: null
+  name: getdetails-67215caf-eaf4-4e48-ac47-4990e7b6a3f5
+  namespace: default
+spec:
+  deployment:
+    checksum: {}
+    type: url
+    url: archive://getdetails-py-MBeW
+  environment:
+    name: python
+    namespace: default
+  source:
+    checksum: {}
+status:
+  buildstatus: none
+  lastUpdateTimestamp: "2022-06-11T10:48:33Z"
+
+---
+apiVersion: fission.io/v1
+kind: Function
+metadata:
+  creationTimestamp: null
+  name: getdetails
+  namespace: default
+spec:
+  InvokeStrategy:
+    ExecutionStrategy:
+      ExecutorType: poolmgr
+      MaxScale: 0
+      MinScale: 0
+      SpecializationTimeout: 120
+      TargetCPUPercent: 0
+    StrategyType: execution
+  concurrency: 500
+  environment:
+    name: python
+    namespace: default
+  functionTimeout: 60
+  idletimeout: 120
+  package:
+    packageref:
+      name: getdetails-67215caf-eaf4-4e48-ac47-4990e7b6a3f5
+      namespace: default
+  requestsPerPod: 1
+  resources: {}

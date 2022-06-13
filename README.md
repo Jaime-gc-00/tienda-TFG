@@ -13,9 +13,9 @@ Despliegue:
 
 **3. Desplegar base de datos:**
 
-      kubectl apply -f db_conf/secrets.yaml
-      kubectl apply -f db_conf/mysql-pv.yaml
-      kubectl apply -f db_conf/mysqp-deployment.yaml
+      kubectl apply -f db_conf/secrets.yaml;
+      kubectl apply -f db_conf/mysql-pv.yaml;
+      kubectl apply -f db_conf/mysql-deployment.yaml;
 
 **4. Ingresar en la base de datos con:**
 

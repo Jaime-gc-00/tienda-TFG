@@ -44,11 +44,11 @@ Despliegue:
       fission fn create --name getproducts --env python --code getproducts.py;
       fission fn create --name getdetails --env python --code getdetails.py;
       fission fn create --name registrar --env python --code registrar.py;
-      fission fn create --name getcarrito --env python --code carrito_getcarrito.py;
-      fission fn create --name borrarelemento --env python --code carrito_borrarelemento.py;
-      fission fn create --name borrarcarrito --env python --code carrito_borrarcarrito.py;
-      fission fn create --name agregarencarrito --env python --code carrito_agregarencarrito.py;
-      fission fn create --name comprarcarrito --env python --code carrito_comprarcarrito.py;
+      fission fn create --name getcarrito --env python --code getcarrito.py;
+      fission fn create --name borrarelemento --env python --code borrarelemento.py;
+      fission fn create --name borrarcarrito --env python --code borrarcarrito.py;
+      fission fn create --name agregarencarrito --env python --code agregarencarrito.py;
+      fission fn create --name comprarcarrito --env python --code comprarcarrito.py;
       fission fn create --name sendemail --env python --code sendemail.py;
 
       fission route create --name inicio --method POST --method GET --url /inicio --function inicio;

@@ -3,7 +3,7 @@ Versión inicial de la tienda acabada. Abierta a posibles nuevas funcionalidades
 
 Despliegue:
 
-**1. Abrir clúster de GKE**
+**1. Crear clúster de GKE**
 
       gcloud container clusters create demo --num-nodes=5 --zone=us-central1-a
 
